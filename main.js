@@ -1,5 +1,5 @@
 function generateHtml(path) {
-	const p = 'https://raw.githubusercontent.com/NE-401/ImpressionZombies_01/refs/heads/main/' + path;
+	const p = 'https://raw.githubusercontent.com/NE-401/ImpressionZombies_01/refs/heads/main/json/' + path;
 
 	fetch(p).then(response => response.json()).then(data => {
 		// load success
