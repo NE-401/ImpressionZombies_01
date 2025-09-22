@@ -3,9 +3,9 @@ window.addEventListener('DOMContentLoaded', function() {
 	const pattern = /^.*\//g;
 	const htmlPath = currentPath.replace(pattern, '');
 	const jsonPath = htmlPath.replace('html','json');
-	const p = 'https://raw.githubusercontent.com/NE-401/ImpressionZombies_01/refs/heads/main/json/' + jsonPath;
+	const jsonUrl = 'https://raw.githubusercontent.com/NE-401/ImpressionZombies_01/refs/heads/main/json/' + jsonPath;
 
-	fetch(p).then(response => response.json()).then(data => {
+	fetch(jsonUrl).then(response => response.json()).then(data => {
 		const titleString = 'Impression zombies found at ' + (data.startDate + ' ~ ' + data.endDate);
 		document.write('<title>' + titleString + '</title>');
 		document.write('<h1>' + titleString + '</h1>');
