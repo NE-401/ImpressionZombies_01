@@ -20,16 +20,15 @@ function generateHtml(path) {
 		document.write('<br><br><a href="index.html">Back to index.html</a>');
 	}).catch(error => {
 		console.error('Error:', error);
-		const titleFailed = 'JSON load failed';
+		const titleStringFailed = 'JSON load failed';
 		// title
 		const title = document.createElement('title');
-		title.textContent = titleFailed;
+		title.textContent = titleStringFailed;
 		document.head.appendChild(title);
 
 		// h1
 		const h1 = document.createElement('h1');
-		h1.textContent = titleFailed;
-
+		h1.textContent = titleStringFailed;
 		document.body.appendChild(h1);
 	});
 }
