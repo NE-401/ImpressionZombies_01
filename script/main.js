@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		for(let i = 0; i < userKeys.length; i++) {
 			userName = data.userIds[i];
 			document.write(
-				String(i+1) + ': <a href="https://x.com/' + userName + '">@' + userName + '</a><br>'
+				String(i+1) + ': <a href="https://x.com/' + userName + '" target="_blank" rel="noopener noreferrer">@' + userName + '</a><br>'
 			);
 		}
 		document.write('<br><br><a href="../index.html">Back to index.html</a>');
