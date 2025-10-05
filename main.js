@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', function() {
 				String(i+1) + ': <a href="https://x.com/' + userName + '">@' + userName + '</a><br>'
 			);
 		}
-		document.write('<br><br><a href="index.html">Back to index.html</a>');
+		document.write('<br><br><a href="../index.html">Back to index.html</a>');
 	}).catch(error => {		// failed to load JSON
 		document.write('<title>JSON load failed</title>');
 		document.write('<h1>JSON load failed</h1>');
