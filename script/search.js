@@ -1,9 +1,9 @@
-function onClickSearchBtn() {
+async function onClickSearchBtn() {
 	const currentPath = window.location.pathname;
 	const pattern = /^.*\//g;
 	const url = 'https://raw.githubusercontent.com/NE-401/ImpressionZombies_01/refs/heads/main/json/';
 	const decimalChar = "0123456789";
-
+	const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 	const txt = inputId.value;
 	if(txt.trim() === '') {
 		return;
@@ -35,9 +35,9 @@ function onClickSearchBtn() {
 					isEnd = true;
 				});
 			}
-			if(isEnd) break;
+			await sleep(3);
 			i++;
-		} while(i < 100);
+		} while(i < 100 && !isEnd);
 	}
 }
 
