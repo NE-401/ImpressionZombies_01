@@ -8,13 +8,14 @@ window.addEventListener('DOMContentLoaded', function() {
 	fetch(jsonUrl).then(response => response.json()).then(data => {
 		const titleString = 'Impression zombies found at ' + (data.startDate + ' ~ ' + data.endDate);
 		document.write('<title>' + titleString + '</title>');
-		document.write('<h1>' + titleString + '</h1>');
 
 		const userKeys = Object.keys(data.userIds);
+		document.write('<h1>' + titleString + ' (' + userKeys.length + ' accounts)' + '</h1>');
+
 		for(let i = 0; i < userKeys.length; i++) {
 			userName = data.userIds[i];
 			document.write(
-				String(i+1) + ': <a href="https://x.com/' + userName + '" target="_blank" rel="noopener noreferrer">@' + userName + '</a><br>'
+				String(i+1) + ': <a href="https://x.com/' + userName + '">@' + userName + '</a><br>'
 			);
 		}
 		document.write('<br><br><a href="../index.html">Back to index.html</a>');
