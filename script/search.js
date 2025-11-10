@@ -1,6 +1,4 @@
 async function onClickSearchBtn() {
-	const currentPath = window.location.pathname;
-	const pattern = /^.*\//g;
 	const url = 'https://raw.githubusercontent.com/NE-401/ImpressionZombies_01/refs/heads/main/json/';
 	const decimalChar = "0123456789";
 	const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -9,9 +7,8 @@ async function onClickSearchBtn() {
 		return;
 	} else {
 		const result = document.getElementById('result');
-		let i = 1;
 		let isEnd = false;
-		do {
+		for(let i = 1; i < 100 && !isEnd; i++) {
 			const jsonNum = decimalChar.charAt(i / 10) + decimalChar.charAt(i % 10);
 			const jsonUrl = url + jsonNum + '.json';
 			const xhr = new XMLHttpRequest();
@@ -32,12 +29,12 @@ async function onClickSearchBtn() {
 					}
 				}).catch(error => {		// failed to load JSON
 					result.innerText = txt + ' is not present in the list. Please contact the list owner.';
+					console.log(error);
 					isEnd = true;
 				});
 			}
 			await sleep(3);
-			i++;
-		} while(i < 100 && !isEnd);
+		}
 	}
 }
 
