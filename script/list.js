@@ -6,19 +6,21 @@ window.addEventListener('DOMContentLoaded', function() {
 	const jsonUrl = url + jsonName;
 
 	fetch(jsonUrl).then(response => response.json()).then(data => {
+		document.write('<style> ol { padding-left: 45px; } </style>');
+
 		const titleString = 'Impression zombies found at ' + (data.startDate + ' ~ ' + data.endDate);
 		document.write('<title>' + titleString + '</title>');
 
 		const userKeys = Object.keys(data.userIds);
-		document.write('<h1>' + titleString + ' (' + userKeys.length + ' accounts)' + '</h1>');
+		document.write('<h1>' + titleString + ' (' + userKeys.length + ' accounts)' + '</h1><ol>');
 
 		for(let i = 0; i < userKeys.length; i++) {
 			userName = data.userIds[i];
 			document.write(
-				String(i+1) + ': <a href="https://x.com/' + userName + '">@' + userName + '</a><br>'
+				'<li><a href="https://x.com/' + userName + '">@' + userName + '</a></li>'
 			);
 		}
-		document.write('<br><br><a href="../index.html">Back to index.html</a>');
+		document.write('</ol><br><br><a href="../index.html">Back to index.html</a>');
 	}).catch(error => {		// failed to load JSON
 		document.write('<title>JSON load failed</title>');
 		document.write('<h1>JSON load failed</h1>');
