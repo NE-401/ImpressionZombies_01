@@ -11,6 +11,7 @@ async function onClickSearchBtn() {
 		for(let i = 1; i < 100 && !isEnd; i++) {
 			const jsonNum = decimalChar.charAt(i / 10) + decimalChar.charAt(i % 10);
 			const jsonUrl = url + jsonNum + '.json';
+			console.log(isEnd + ' ' + jsonNum + '.json'); // debug
 			const xhr = new XMLHttpRequest();
 			xhr.open("HEAD", jsonUrl, false);
 			xhr.send();
