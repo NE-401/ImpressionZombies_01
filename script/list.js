@@ -33,6 +33,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		let chkList = [];
 		if(document.cookie) {
 			chkList = document.cookie;
+			console.log(document.cookie);
 		} else {
 			chkList = '0'.repeat(userKeys.length);
 		}
@@ -53,8 +54,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
 				const cookieStr = a + '; expires=' + exp.toUTCString();
 				document.cookie = cookieStr;
-				console.log(cookieStr);
-				console.log(document.cookie);
+				console.log('cookieStr: ' + cookieStr);
+				console.log('document.cookie: ' + document.cookie);
 			});
 		});
 	}).catch(error => {		// failed to load JSON
