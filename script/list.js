@@ -14,14 +14,13 @@ window.addEventListener('DOMContentLoaded', function() {
 		document.write('<h1>' + titleString + ' (' + userKeys.length + ' accounts)' + '</h1><ol>');
 
 		const pageNum = jsonName.replace('.json','');
-		document.write('<table border="1"><tr><th>#</th><th>Accound ID</th><th>Reported?</th></tr>');
+		document.write('<table border="1"><tr><th>#</th><th>Accound ID</th></tr>');
 
 		for(let i = 0; i < userKeys.length; i++) {
 			const userName = data.userIds[i];
-			const reported = String(pageNum) + '-' + String(i+1);
+			// const reported = String(pageNum) + '-' + String(i+1);
 			document.write(
 				'<tr><td>' + String(i+1) + '</td><td><a href="https://x.com/' + userName + '">@' + userName + '</a></td>'
-				+ '<td><input type="checkbox" id="reported_' + reported + '"></td></tr>'
 			);
 		}
 		document.write('</table><br><br><a href="../index.html">Back to index.html</a>');
