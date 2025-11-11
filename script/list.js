@@ -50,7 +50,10 @@ window.addEventListener('DOMContentLoaded', function() {
 				const a = x.join('');
 				const expDay = 365;
 				exp.setTime(exp.getTime() + (1000 * 3600 * 24 * expDay));
-				document.cookie = a + '; expires=' + exp.toUTCString();
+
+				const cookieStr = a + '; expires=' + exp.toUTCString();
+				document.cookie = cookieStr;
+				console.log(cookieStr);
 				console.log(document.cookie);
 			});
 		});
