@@ -1,4 +1,3 @@
-
 window.addEventListener('DOMContentLoaded', function() {
 	const currentPath = window.location.pathname;
 	const pattern = /^.*\//g;
