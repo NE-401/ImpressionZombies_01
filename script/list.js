@@ -12,13 +12,10 @@ window.addEventListener('DOMContentLoaded', function() {
 
 		const userKeys = Object.keys(data.userIds);
 		document.write('<h1>' + titleString + ' (' + userKeys.length + ' accounts)' + '</h1><ol>');
-
-		const pageNum = jsonName.replace('.json','');
 		document.write('<table border="1"><tr><th>#</th><th>Accound ID</th></tr>');
 
 		for(let i = 0; i < userKeys.length; i++) {
 			const userName = data.userIds[i];
-			// const reported = String(pageNum) + '-' + String(i+1);
 			document.write(
 				'<tr><td>' + String(i+1) + '</td><td><a href="https://x.com/' + userName + '">@' + userName + '</a></td>'
 			);
