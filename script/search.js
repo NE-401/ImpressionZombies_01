@@ -1,40 +1,45 @@
 async function onClickSearchBtn() {
 	const url = 'https://raw.githubusercontent.com/NE-401/ImpressionZombies_01/refs/heads/main/json/';
 	const decimalChar = "0123456789";
-	const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 	const txt = inputId.value;
+	const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 	if(txt.trim() === '') {
 		return;
 	} else {
 		const result = document.getElementById('result');
 		let isEnd = false;
+		const users = [];
 		for(let i = 1; i < 100 && !isEnd; i++) {
 			const jsonNum = decimalChar.charAt(i / 10) + decimalChar.charAt(i % 10);
 			const jsonUrl = url + jsonNum + '.json';
-			// console.log(isEnd + ' ' + jsonNum + '.json'); // debug
 			const xhr = new XMLHttpRequest();
 			xhr.open("HEAD", jsonUrl, false);
 			xhr.send();
 			if(xhr.status == 404) {		// not found JSON
-				result.innerText = txt + ' is not present in the list. Please contact the list owner.';
+				users.forEach((u) => {
+					const uArr = u[1];
+					uArr.forEach((ud) => {
+						if(!isEnd && txt.toLowerCase() === ud.toLowerCase()) {
+							result.innerText = txt + ' is found at ' + u[0] + '.html.';
+							isEnd = true;
+						}
+					});
+				});
+				if(!isEnd) result.innerText = txt + ' was not found on list.';
 				break;
 			} else {
 				fetch(jsonUrl).then(response => response.json()).then(data => {
-					const userKeys = Object.keys(data.userIds);
-					for(let j = 0; j < userKeys.length; j++) {
-						if(data.userIds[j].toLowerCase() == txt.toLowerCase()) {
-							result.innerText = txt + ' is found in the list ' + jsonNum + '.json';
-							isEnd = true;
-							break;
-						}
-					}
+					let a = [];
+					a.push(jsonNum);
+					a.push(data.userIds);
+					users.push(a);
+					console.log('loaded ' + jsonNum + '.json');
 				}).catch(error => {		// failed to load JSON
-					result.innerText = txt + ' is not present in the list. Please contact the list owner.';
-					console.log(error);
 					isEnd = true;
 				});
 			}
-			await sleep(3);
+			await sleep(4);
 		}
 	}
 }
