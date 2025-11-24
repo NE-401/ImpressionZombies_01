@@ -7,7 +7,6 @@ function intToBinaryStr(n) {
 		a[i] = (m % 2) ? '1' : '0';
 		m = Math.floor(m / 2);
 	}
-	console.log(n + ': ' + a.join(''));
 	return a.join('');
 }
 
@@ -80,7 +79,6 @@ window.addEventListener('DOMContentLoaded', function() {
 		}
 		let stateArray = chkBoxState.split('');
 		let chkboxArr = [];
-		console.log(chkBoxState);
 
 		for(let i = 0; i < userKeys.length; i++) {
 			const userName = data.userIds[i];
@@ -102,7 +100,6 @@ window.addEventListener('DOMContentLoaded', function() {
 				for(let i = 0; i < stateArray.length; i++) {
 					if(!stateArray[i]) stateArray[i] = '0';
 				}
-				console.log(stateArray.join(''));
 				writeData(pageNumber, stateArray.join(''));
 			});
 		});
