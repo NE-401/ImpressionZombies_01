@@ -1,22 +1,14 @@
 const b64char = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
 function intToBinaryStr(n) {
-	let s = '';
+	let a = Array(6);
 	let m = n;
-
-	for(let b = 32; b > 1; b /= 2) {
-		if((m / b) >= 1) {
-			s += '1';
-		} else {
-			s += '0';
-		}
-
-		m -= b;
+	for(let i = 5; i >= 0; i--) {
+		a[i] = (m % 2) ? '1' : '0';
+		m = Math.floor(m / 2);
 	}
-	if(m % 2) s += '1';
-	else s += '0';
-
-	return s;
+	console.log(n + ': ' + a.join(''));
+	return a.join('');
 }
 
 function binaryStrToInt(s) {
@@ -43,12 +35,12 @@ function readData(pageNum) {
 
 	if(result) {
 		for(let i = 0; i < result.length; i++) {
-			expand += intToBinaryStr(b64char.indexOf(result.charAt(i)));
+			const c = b64char.indexOf(result.charAt(i));
+			expand += intToBinaryStr(c);
 		}
 	} else {
 		return null;
 	}
-
 	return expand;
 }
 
@@ -88,15 +80,15 @@ window.addEventListener('DOMContentLoaded', function() {
 		}
 		let stateArray = chkBoxState.split('');
 		let chkboxArr = [];
+		console.log(chkBoxState);
 
 		for(let i = 0; i < userKeys.length; i++) {
 			const userName = data.userIds[i];
-			const checked = stateArray[i];
 
 			document.write(
 				'<tr><td>' + String(i + 1) + '</td><td><a href="https://x.com/' + userName + '">@' + userName + '</a></td>'
 				+ '<td><input type="checkbox" id="c_' + String(i)
-				+ (checked == '1' ? '" checked' : '"')
+				+ (chkBoxState.charAt(i) == '1' ? '" checked' : '"')
 				+ '></td></tr>'
 			);
 
@@ -107,6 +99,10 @@ window.addEventListener('DOMContentLoaded', function() {
 		chkboxArr.forEach((c, i) => {
 			c.addEventListener('click', function() {
 				stateArray[i] = (c.checked) ? '1' : '0';
+				for(let i = 0; i < stateArray.length; i++) {
+					if(!stateArray[i]) stateArray[i] = '0';
+				}
+				console.log(stateArray.join(''));
 				writeData(pageNumber, stateArray.join(''));
 			});
 		});
