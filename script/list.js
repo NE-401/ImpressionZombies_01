@@ -11,13 +11,11 @@ function intToBinaryStr(n) {
 }
 
 function binaryStrToInt(s) {
-	let n = 0;
-	n += (s.charAt(0) == '1' ? 32 : 0);
-	n += (s.charAt(1) == '1' ? 16 : 0);
-	n += (s.charAt(2) == '1' ? 8 : 0);
-	n += (s.charAt(3) == '1' ? 4 : 0);
-	n += (s.charAt(4) == '1' ? 2 : 0);
-	n += (s.charAt(5) == '1' ? 1 : 0);
+	let n = 0, m = 32;
+	for(let i = 0; m >= 1; i++) {
+		n += s.charAt(i) == '1' ? m : 0;
+		m /= 2;
+	}
 	return n;
 }
 
@@ -34,8 +32,7 @@ function readData(pageNum) {
 
 	if(result) {
 		for(let i = 0; i < result.length; i++) {
-			const c = b64char.indexOf(result.charAt(i));
-			expand += intToBinaryStr(c);
+			expand += intToBinaryStr(b64char.indexOf(result.charAt(i)));
 		}
 	} else {
 		return null;
@@ -53,7 +50,6 @@ function writeData(pageNum, s) {
 		ts = ts.slice(6);
 		ds += b64char.charAt(binaryStrToInt(n));
 	}
-
 	localStorage.setItem(pageNum, ds);
 }
 
@@ -66,9 +62,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	fetch(jsonUrl).then(response => response.json()).then(data => {
 		const titleString = 'Impression zombies found at ' + (data.startDate + ' ~ ' + data.endDate);
-		document.write('<title>' + titleString + '</title>');
-
 		const userKeys = Object.keys(data.userIds);
+		document.write('<title>' + titleString + '</title>');
 		document.write('<h1>' + titleString + ' (' + userKeys.length + ' accounts)' + '</h1><ol>');
 		document.write('<table border="1"><tr><th>#</th><th>Accound ID</th><th>Blocked?</th></tr>');
 
@@ -82,16 +77,13 @@ window.addEventListener('DOMContentLoaded', function() {
 
 		for(let i = 0; i < userKeys.length; i++) {
 			const userName = data.userIds[i];
-
 			document.write(
 				'<tr><td>' + String(i + 1) + '</td><td><a href="https://x.com/' + userName + '">@' + userName + '</a></td>'
 				+ '<td><input type="checkbox" id="c_' + String(i)
 				+ (chkBoxState.charAt(i) == '1' ? '" checked' : '"')
 				+ '></td></tr>'
 			);
-
-			const c = document.getElementById('c_' + String(i));
-			chkboxArr.push(c);
+			chkboxArr.push(document.getElementById('c_' + String(i)));
 		}
 
 		chkboxArr.forEach((c, i) => {
