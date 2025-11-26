@@ -48,7 +48,7 @@ function writeData(pageNum, s) {
 	localStorage.setItem(pageNum, ds);
 }
 
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', () => {
 	const currentPath = window.location.pathname;
 	const pattern = /^.*\//g;
 	const url = 'https://raw.githubusercontent.com/NE-401/ImpressionZombies_01/refs/heads/main/json/';

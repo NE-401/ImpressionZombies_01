@@ -28,6 +28,6 @@ async function generateList() {
 	document.write(doc);
 }
 
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', () => {
 	generateList();
 });

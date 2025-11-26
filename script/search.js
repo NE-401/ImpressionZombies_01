@@ -44,17 +44,15 @@ async function loadJSON() {
 	}
 }
 
-function onClickSearchBtn() {
-	const txt = inputId.value;
-	if(txt.trim() === '') {
-		return;
-	} else {
-		searchId(txt);
-	}
-}
-
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', () => {
 	const submitBtn = document.getElementById('submitBtn');
-	submitBtn.addEventListener('click', onClickSearchBtn);
+	submitBtn.addEventListener('click', () => {
+		const txt = inputId.value;
+		if(txt.trim() === '') {
+			return;
+		} else {
+			searchId(txt);
+		}
+	});
 	loadJSON();
 });
