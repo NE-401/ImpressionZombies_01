@@ -2,7 +2,6 @@ let users = [];
 
 function searchId(t) {
 	const result = document.getElementById('result');
-	const txt = inputId.value;
 	let found = false;
 	users.forEach((u) => {
 		const uArr = u[1];
