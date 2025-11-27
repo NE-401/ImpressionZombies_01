@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		const titleString = 'Impression zombies found at ' + (data.startDate + ' ~ ' + data.endDate);
 		const userKeys = Object.keys(data.userIds);
 		document.write('<title>' + titleString + '</title>');
-		document.write('<h1>' + titleString + ' (' + userKeys.length + ' accounts)</h1><ol>');
+		document.write('<h2>' + titleString + ' (' + userKeys.length + ' accounts)</h2>');
 		document.write('<form><input type="button" id="download" value="Download Account List"></form>');
 		document.write('<table border="1"><tr><th>#</th><th>Accound ID</th><th>Blocked?</th></tr>');
 

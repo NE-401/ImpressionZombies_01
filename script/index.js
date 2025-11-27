@@ -3,7 +3,7 @@ async function generateList() {
 	const decimalChar = "0123456789";
 	const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 	let ed = '', docList = '';
-	let doc = '<title>Impression zombies list</title><h1>Impression zombies list</h1>';
+	let doc = '<title>Impression zombies list</title><h2>Impression zombies list</h2>';
 	let total = 0;
 
 	for(let i = 1; ed != 'now' && i < 100; i++) {
