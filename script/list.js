@@ -107,9 +107,10 @@ window.addEventListener('DOMContentLoaded', () => {
 			});
 		});
 
-		document.write('</table><br><br><a href="../index.html">Back to index.html</a>');
+		document.write('</table><br><br><a href="/">Back to top page</a>');
 	}).catch(error => {		// failed to load JSON
 		document.write('<title>JSON load failed</title><h1>JSON load failed</h1>');
+		document.write('<br><a href="/">Back to top page</a>');
 		console.log(error);
 	});
 });
