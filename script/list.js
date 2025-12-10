@@ -54,7 +54,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	let url = new URL(window.location.href);
 	let p = url.searchParams;
 	const jsonName = p.get('p');
-	const jsonUrl = 'https://raw.githubusercontent.com/NE-401/ImpressionZombies_01/refs/heads/main/json/' + jsonName;
+	const jsonUrl = 'https://raw.githubusercontent.com/NE-401/ImpressionZombies_01/refs/heads/main/json/' + jsonName + '.json';
 
 	fetch(jsonUrl).then(response => response.json()).then(data => {
 		const titleString = 'Impression zombies found at ' + (data.startDate + ' ~ ' + data.endDate);
