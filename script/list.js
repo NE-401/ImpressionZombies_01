@@ -50,7 +50,6 @@ function writeData(pageNum, s) {
 
 window.addEventListener('DOMContentLoaded', () => {
 	const currentPath = window.location.pathname;
-	const pattern = /^.*\//g;
 	let url = new URL(window.location.href);
 	let p = url.searchParams;
 	const jsonName = p.get('p');
