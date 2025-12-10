@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	let sec = 10;
 	const timerElm = document.getElementById('timer');
-	console.log(location.pathname);
+	// console.log(location.pathname);
 	const countdown = setInterval(() => {
 		sec--;
 		timerElm.textContent = sec;
