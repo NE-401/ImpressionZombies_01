@@ -1,12 +1,10 @@
 window.addEventListener('DOMContentLoaded', () => {
-	/*
 	const m = location.pathname.match(/^\/lists\/(.+)\.html$/i);
 	if(m) {
 		const p = m[1];
 		location.replace('/list.html?p=' + p);
 		throw new Error('Redirecting');
 	}
-	*/
 
 	let sec = 10;
 	const timerElm = document.getElementById('timer');
