@@ -53,7 +53,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	const pattern = /^.*\//g;
 	let url = new URL(window.location.href);
 	let p = url.searchParams;
-	const jsonName = params.get('p');
+	const jsonName = p.get('p');
 	const jsonUrl = 'https://raw.githubusercontent.com/NE-401/ImpressionZombies_01/refs/heads/main/json/' + jsonName;
 
 	fetch(jsonUrl).then(response => response.json()).then(data => {
