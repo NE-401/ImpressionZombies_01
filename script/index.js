@@ -15,7 +15,7 @@ async function generateList() {
 			break;
 		} else {
 			fetch(jsonUrl).then(response => response.json()).then(data => {
-				docList += '<li><a href="lists/' + jsonNum + '.html">' + data.startDate + ' ~ ' + data.endDate + ' (' + data.userIds.length + 'x Zombies)</a></li>';
+				docList += '<li><a href="list.html?p=' + jsonNum + '">' + data.startDate + ' ~ ' + data.endDate + ' (' + data.userIds.length + 'x Zombies)</a></li>';
 				total += data.userIds.length;
 				ed = data.endDate;
 			}).catch(error => {		// failed to load JSON
