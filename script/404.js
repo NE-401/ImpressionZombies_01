@@ -1,8 +1,8 @@
 window.addEventListener('DOMContentLoaded', () => {
 	const m = location.pathname.match(/^\/lists\/(.+)\.html$/i);
+	console.log(m);
 	if(m) {
 		const p = m[1];
-		console.log(p);
 		location.replace('/ImpressionZombies_01/list.html?p=' + p);
 		throw new Error('Redirecting');
 	} else {
