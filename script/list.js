@@ -1,23 +1,5 @@
 const b64char = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
-function intToBinaryStr(n) {
-	let a = Array(6), m = n;
-	for(let i = 5; i >= 0; i--) {
-		a[i] = (m % 2) ? '1' : '0';
-		m = Math.floor(m / 2);
-	}
-	return a.join('');
-}
-
-function binaryStrToInt(s) {
-	let n = 0, m = 32;
-	for(let i = 0; m >= 1; i++) {
-		n += (s.charAt(i) == '1') ? m : 0;
-		m /= 2;
-	}
-	return n;
-}
-
 function initData(pageNum, max) {
 	localStorage.setItem(pageNum, 'A'.repeat(Math.ceil(max / 6)));
 	return '0'.repeat(max);
@@ -29,7 +11,9 @@ function readData(pageNum) {
 	if(result) {
 		let expand = '';
 		for(let i = 0; i < result.length; i++) {
-			expand += intToBinaryStr(b64char.indexOf(result.charAt(i)));
+			const idx = b64char.indexOf(result.charAt(i));
+			const to6BitStr = n => ('000000' + n.toString(2)).slice(-6);
+			expand += to6BitStr(idx);
 		}
 		return expand;
 	} else {
@@ -43,7 +27,7 @@ function writeData(pageNum, s) {
 	while(ts.length > 0) {
 		const n = ts.slice(0,6);
 		ts = ts.slice(6);
-		ds += b64char.charAt(binaryStrToInt(n));
+		ds += b64char.charAt(parseInt(n, 2));
 	}
 	localStorage.setItem(pageNum, ds);
 }
