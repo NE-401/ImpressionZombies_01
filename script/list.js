@@ -36,8 +36,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	const currentPath = window.location.pathname;
 	let url = new URL(window.location.href);
 	let p = url.searchParams;
-	const jsonName = p.get('p');
-	const jsonUrl = 'https://raw.githubusercontent.com/NE-401/ImpressionZombies_01/refs/heads/main/json/' + jsonName + '.json';
+	const pageNumber = p.get('p');
+	const jsonUrl = 'https://raw.githubusercontent.com/NE-401/ImpressionZombies_01/refs/heads/main/json/' + pageNumber + '.json';
 
 	fetch(jsonUrl).then(response => response.json()).then(data => {
 		const titleString = 'Impression zombies found at ' + (data.startDate + ' ~ ' + data.endDate);
@@ -47,7 +47,6 @@ window.addEventListener('DOMContentLoaded', () => {
 		document.write('<form><input type="button" id="download" value="Download Account List"></form>');
 		document.write('<table border="1"><tr><th>#</th><th>Accound ID</th><th>Blocked?</th></tr>');
 
-		const pageNumber = jsonName.replace('.json','');
 		let chkBoxState = readData(pageNumber);
 		if(!chkBoxState) {
 			chkBoxState = initData(pageNumber, userKeys.length);
