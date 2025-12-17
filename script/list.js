@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		for(let i = 0; i < userKeys.length; i++) {
 			const userName = data.userIds[i];
 			document.write(
-				'<tr><td>' + String(i + 1) + '</td><td><a href="https://x.com/' + userName + '">@' + userName + '</a></td>'
+				'<tr><td>' + String(i + 1) + '</td><td><a href="https://x.com/' + userName + '" target="_blank">@' + userName + '</a></td>'
 				+ '<td><input type="checkbox" id="c_' + String(i)
 				+ ((chkBoxState.charAt(i) == '1') ? '" checked' : '"')
 				+ '></td></tr>'
