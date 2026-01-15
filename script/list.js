@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			const userName = data.userIds[i];
 			document.write(
 				'<tr><td>' + String(i + 1) + '</td><td><a href="https://x.com/' + userName + '" target="_blank">@' + userName + '</a></td>'
-				+ '<td><input type="checkbox" id="c_' + String(i)
+				+ '<td align="center"><input type="checkbox" id="c_' + String(i)
 				+ ((chkBoxState.charAt(i) == '1') ? '" checked' : '"')
 				+ '></td></tr>'
 			);
